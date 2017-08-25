@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<h2>测试ExportExcelTest</h2>
+@using (Html.BeginForm("TestExportListToExcel", "TestWriteToExcel", FormMethod.Get))
+{
+    <button class="btn btn-primary" type="submit">测试ExportListToExcel</button>
+
+}
+
+
+<h2>测试ExportExcelTest不带Heading</h2>
+@using (Html.BeginForm("TestExportListToExcelWithOutHeading", "TestWriteToExcel", FormMethod.Get))
+{
+    <button class="btn btn-primary" type="submit">测试ExportListToExcel不带Heading</button>
+
+}
+<h2>测试ExportExcelTest不带序号</h2>
+@using (Html.BeginForm("TestExportListToExcelWithOutisShowSlNoIsFalse", "TestWriteToExcel", FormMethod.Get))
+{
+    <button class="btn btn-primary" type="submit">测试ExportListToExcel不带序号</button>
+
+}
