@@ -9,7 +9,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace ExcelWithEpplusCore.ExcelServices
+namespace ExcelWithEpplusCore452.ExcelServices
 {
     public class WriteToExcel : IWriteToExcel
     {

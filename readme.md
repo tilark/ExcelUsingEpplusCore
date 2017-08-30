@@ -136,6 +136,20 @@ public abstract class ReadFromExcelService
     }
 ```
 ### 调用实例操作
+#### 前端界面
+```
+<form asp-action="ImportPersonInfo" method="post" enctype="multipart/form-data">
+    <input type="file" name="file"  />
+    <button type="submit" class="btn btn-primary">上传</button>
+</form>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <h5 class="text-danger">@ViewBag.ErrorMessage</h5>
+
+}
+```
+#### 后台处理
 ```
   public async Task<IActionResult> ImportUserInfo(IFormFile file)
         {
@@ -153,5 +167,13 @@ public abstract class ReadFromExcelService
             }
             ViewBag.ErrorMessage = result;
             return View();
+        }
+         private bool IsValidFile(IFormFile file)
+        {
+            if (file != null)
+            {
+                return true;
+            }
+            return false;
         }
 ```

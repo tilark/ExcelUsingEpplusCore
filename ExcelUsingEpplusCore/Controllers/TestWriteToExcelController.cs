@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ExcelWithEpplusCore.ExcelServices;
-using ExcelWithEpplusCore.ViewModels;
+using ExcelWithEpplusCore452.ExcelServices;
+using ExcelWithEpplusCore452.ViewModels;
 
-namespace ExcelWithEpplusCore.Controllers
+namespace ExcelWithEpplusCore452.Controllers
 {
     public class TestWriteToExcelController : Controller
     {

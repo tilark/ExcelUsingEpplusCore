@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using ExcelWithEpplusCoreTest.ViewModels.ReadFromExcel;
-using ExcelWithEpplusCore;
+using ExcelWithEpplusCore45;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 using System.Text;

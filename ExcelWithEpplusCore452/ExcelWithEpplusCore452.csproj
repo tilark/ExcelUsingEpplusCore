@@ -1,29 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net452</TargetFramework>
+
     <PackageId>ExcelWithEpplusCore</PackageId>
-    <PackageVersion>2.0.0</PackageVersion>
+    <PackageVersion>1.1.7</PackageVersion>
     <Authors>Tilark_liu</Authors>
     <Description>Read,Write Excel</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>Fix ReadFromExcel Bug</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) Contoso Corporation. All rights reserved.</Copyright>
     <PackageTags>excel read write epplus core</PackageTags>
-    
-    
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\ExcelWithEpplusCore.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.6\ExcelWithEpplusCore452.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EPPlus.Core" Version="1.5.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="NETStandard.Library" Version="2.0.0" />
   </ItemGroup>
 
 </Project>

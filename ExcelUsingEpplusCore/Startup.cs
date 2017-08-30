@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ExcelWithEpplusCore.ExcelServices;
+using ExcelWithEpplusCore452.ExcelServices;
 
-namespace ExcelWithEpplusCore
+namespace ExcelWithEpplusCore452
 {
     public class Startup
     {

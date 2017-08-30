@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 
-namespace ExcelWithEpplusCore.ExcelServices
+namespace ExcelWithEpplusCore452.ExcelServices
 {
     public class ReadFromExcel : IReadFromExcel
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ExcelWithEpplusCore.ExcelServices
+namespace ExcelWithEpplusCore452.ExcelServices
 {
     public class ExcelEntityFactory
     {

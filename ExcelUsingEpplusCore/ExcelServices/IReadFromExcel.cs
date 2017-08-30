@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcelWithEpplusCore.ExcelServices
+namespace ExcelWithEpplusCore452.ExcelServices
 {
     public interface IReadFromExcel
     {
