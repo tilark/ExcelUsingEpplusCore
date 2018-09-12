@@ -5,13 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcelWithEpplusCore452
+namespace ExcelWithEpplusCore
 {
     /// <summary>
     /// 读取Excel文件内容
     /// </summary>
     public interface IReadFromExcel
     {
+        /// <summary>
+        /// 读取形如：第一行为标题，第一列(A列）为主键，从B2开始为数据的Excel文件。
+        /// 编号|标题1|标题2|
+        /// 1001|text1|text2
+        /// </summary>
+        /// <param name="fileStream"></param>
+        /// <returns>第一个Dictionary中的key为第一列的内容，如A2的内容“1001"，第二个Dictionary中的key为第一行的标题名称“标题1”，value为单元格的内容“text1”</returns>
+        Dictionary<string, Dictionary<string, string>> ExcelToDicitonary(Stream fileStream);
         /// <summary>
         /// 存在左侧与右侧分隔的格式的Excel，如A列是部门名称，B列开始是详细属性，如科室属性等，右侧标题行只有1行的情况。
         /// </summary>

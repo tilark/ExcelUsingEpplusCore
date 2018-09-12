@@ -8,13 +8,70 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 
-namespace ExcelWithEpplusCore452
+namespace ExcelWithEpplusCore
 {
     /// <summary>
     /// 
     /// </summary>
     public class ReadFromExcel : IReadFromExcel
     {
+        #region ExcelToDicitonary
+
+        /// <summary>
+        /// 将文件转换成{ key :{
+        /// key,
+        /// value
+        /// }
+        /// </summary>
+        /// <param name="fileStream">文件数据流</param>
+        /// <returns></returns>
+        public Dictionary<string, Dictionary<string, string>> ExcelToDicitonary(Stream fileStream)
+        {
+            var result = new Dictionary<string, Dictionary<string, string>>();
+            try
+            {
+                using (ExcelPackage package = new ExcelPackage(fileStream))
+                {
+                    //  TODO: 1.从第一行，第一列开始取数
+                    // TODO:  2.如果是第二行开始，将第一列的内容作为键，从该行开始遍历，其余的值写入到第二个Dictionary
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];                   
+                    if (worksheet.Dimension == null)
+                    {
+                        throw new IndexOutOfRangeException("表内无内容");
+                    }
+                    
+                    //获得标题字典，将每列标题添加到字典中
+                    int rowEnd = worksheet.Dimension.End.Row;
+                    int colEnd = worksheet.Dimension.End.Column;
+                    if (colEnd < 1 || rowEnd < 1)
+                    {
+                        throw new IndexOutOfRangeException("表内无数据内容");
+                    }
+
+                    for (int row = 2; row < rowEnd; row++){
+                        var temp = new Dictionary<string, string>();
+                        for (int col = 2; col < colEnd; col++){
+
+                            // 从第第二列开始取内容
+                            // 固定第一行与当前列为key
+                            var rowKey = worksheet.Cells[1, col].Value.ToString();
+                            var rowValue = worksheet.Cells[row, col].Value != null ? worksheet.Cells[row, col].Value.ToString(): "";
+                            temp.Add(rowKey, rowValue);
+                        }                        
+                            var key = worksheet.Cells[row, 1].Value != null ? worksheet.Cells[row, 1].Value.ToString() : System.Guid.NewGuid().ToString();
+                            result.Add(key, temp);
+                    }
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+
+                throw new NotSupportedException("无法读取文件内容！ " + ex.Message);
+            }
+        }
+        #endregion
+
         #region 把Excel文件转换为Dictionary<string, T>
         /// <summary>
         /// 存在左侧与右侧分隔的格式的Excel，如A列是部门名称，B列开始是详细属性，如科室属性等，右侧标题行只有1行的情况。
@@ -690,7 +747,7 @@ namespace ExcelWithEpplusCore452
             return match.Value;
         }
 
-
         #endregion
+
     }
 }

@@ -9,7 +9,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace ExcelWithEpplusCore452
+namespace ExcelWithEpplusCore
 {
     /// <summary>
     /// 
