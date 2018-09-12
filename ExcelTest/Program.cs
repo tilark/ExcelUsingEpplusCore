@@ -26,6 +26,7 @@ namespace ExcelTest
                         Console.WriteLine("Key: " + secondDic.Key + ", " + "Value: " + secondDic.Value);
 
                     }
+                    key++;
                 }
             }
         }

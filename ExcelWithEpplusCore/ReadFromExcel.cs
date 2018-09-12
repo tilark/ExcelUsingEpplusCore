@@ -34,12 +34,12 @@ namespace ExcelWithEpplusCore
                 {
                     //  TODO: 1.从第一行，第一列开始取数
                     // TODO:  2.如果是第二行开始，将第一列的内容作为键，从该行开始遍历，其余的值写入到第二个Dictionary
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];                   
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
                     if (worksheet.Dimension == null)
                     {
                         throw new IndexOutOfRangeException("表内无内容");
                     }
-                    
+
                     //获得标题字典，将每列标题添加到字典中
                     int rowEnd = worksheet.Dimension.End.Row;
                     int colEnd = worksheet.Dimension.End.Column;
@@ -48,18 +48,25 @@ namespace ExcelWithEpplusCore
                         throw new IndexOutOfRangeException("表内无数据内容");
                     }
 
-                    for (int row = 2; row < rowEnd; row++){
+                    for (int row = 2; row < rowEnd; row++)
+                    {
+                        var keyCellValue = worksheet.Cells[row, 1].Value;
+                        if (keyCellValue == null || String.IsNullOrEmpty(keyCellValue.ToString()))
+                        {
+                            continue;
+                        }
+                        string key = keyCellValue.ToString();
                         var temp = new Dictionary<string, string>();
-                        for (int col = 2; col < colEnd; col++){
+                        for (int col = 2; col < colEnd; col++)
+                        {
 
                             // 从第第二列开始取内容
                             // 固定第一行与当前列为key
                             var rowKey = worksheet.Cells[1, col].Value.ToString();
-                            var rowValue = worksheet.Cells[row, col].Value != null ? worksheet.Cells[row, col].Value.ToString(): "";
+                            var rowValue = worksheet.Cells[row, col].Value != null ? worksheet.Cells[row, col].Value.ToString() : "";
                             temp.Add(rowKey, rowValue);
-                        }                        
-                            var key = worksheet.Cells[row, 1].Value != null ? worksheet.Cells[row, 1].Value.ToString() : System.Guid.NewGuid().ToString();
-                            result.Add(key, temp);
+                        }
+                        result.Add(key, temp);
                     }
                 }
                 return result;
@@ -700,12 +707,12 @@ namespace ExcelWithEpplusCore
             return rs;
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="cellHead"></param>
-       /// <param name="titleHead"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellHead"></param>
+        /// <param name="titleHead"></param>
+        /// <returns></returns>
         private Dictionary<string, int> TransferCellHeadToPropertyHead(Dictionary<string, string> cellHead, Dictionary<string, int> titleHead)
         {
             var result = new Dictionary<string, int>();
