@@ -237,5 +237,51 @@ namespace ExcelWithEpplusCore
 
             return match.Value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="showKey"></param>
+        /// <returns></returns>
+        public byte[] ExportDictionaryToExcel(Dictionary<string, Dictionary<string, string>> data, bool showKey = false)
+        {
+            byte[] results = null;
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                //var worksheetName = heading.Count > 0 ? heading[0] : String.Empty;
+                var worksheetName = "OutPutExcel";
+
+                ExcelWorksheet workSheet = package.Workbook.Worksheets.Add(string.Format("{0} Data", worksheetName));
+
+                int rowIndex = 1;
+                int columnIndex = 1;
+                //从第一行第一列开始写数
+                foreach(var firstDic in data)
+                {
+                    // 如果showKey = true，则将第一个key写入到第一列
+
+                    if (showKey)
+                    {
+                        workSheet.Cells[rowIndex, columnIndex].Value = "标识";
+                        workSheet.Cells[rowIndex+1, columnIndex].Value = firstDic.Key;
+                        columnIndex++;
+                    }
+                    foreach(var secondDic in firstDic.Value)
+                    {
+                        // 开始将data写入
+                        workSheet.Cells[rowIndex, columnIndex].Value = secondDic.Key;
+                        workSheet.Cells[rowIndex + 1, columnIndex].Value = secondDic.Value;
+                        columnIndex++;
+                    }
+                    columnIndex = 1;
+                    rowIndex += 2;
+                }             
+
+                results = package.GetAsByteArray();
+            }
+
+            return results;
+        }
     }
 }

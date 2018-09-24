@@ -13,6 +13,18 @@ namespace ExcelWithEpplusCore
     public interface IWriteToExcel
     {
         /// <summary>
+        /// 将Dictionary的值写入到Excel中，如果showKey为true，将外层的key写入在每一列的第一行
+        /// 内层Dictionary从第开始列开始，key为第一行内容，value为第二行内容。形如
+        /// |标识|(姓名）第一Key|（部门）第二Key|
+        /// |Key|张三|人事部|
+        /// |标识|(姓名）第一Key|（部门）第二Key|
+        /// |Key|李四|技术部|
+        /// </summary>
+        /// <param name="data">需写入到Excel中的数据</param>
+        /// <param name="showKey">外层Dictionary的key是否写入到excel，默认不写</param>
+        /// <returns></returns>
+        byte[] ExportDictionaryToExcel(Dictionary<string, Dictionary<string, string>> data, bool showKey = false);
+        /// <summary>
         /// 对应的模版为第一行为大标题，第1列为各关键列，第二行为关键列对应的各属性值
         /// </summary>
         /// <typeparam name="T"></typeparam>
