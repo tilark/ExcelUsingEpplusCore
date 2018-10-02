@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>ExcelWithEpplusCore</PackageId>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.2.1</PackageVersion>
     <Authors>Tilark_liu</Authors>
     <Description>Read,Write Excel</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>add ExportDictionaryToExcel，将Dictionary值导出到Excel</PackageReleaseNotes>
+    <PackageReleaseNotes>修复读取Excel数据时，无法读最后一行和最后一列的BUG</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) Contoso Corporation. All rights reserved.</Copyright>
     <PackageTags>excel read write epplus core</PackageTags>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
     
     
   </PropertyGroup>

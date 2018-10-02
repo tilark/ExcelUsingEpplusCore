@@ -48,7 +48,7 @@ namespace ExcelWithEpplusCore
                         throw new IndexOutOfRangeException("表内无数据内容");
                     }
 
-                    for (int row = 2; row < rowEnd; row++)
+                    for (int row = 2; row <= rowEnd; row++)
                     {
                         var keyCellValue = worksheet.Cells[row, 1].Value;
                         if (keyCellValue == null || String.IsNullOrEmpty(keyCellValue.ToString()))
@@ -57,7 +57,7 @@ namespace ExcelWithEpplusCore
                         }
                         string key = keyCellValue.ToString();
                         var temp = new Dictionary<string, string>();
-                        for (int col = 2; col < colEnd; col++)
+                        for (int col = 2; col <= colEnd; col++)
                         {
 
                             // 从第第二列开始取内容
