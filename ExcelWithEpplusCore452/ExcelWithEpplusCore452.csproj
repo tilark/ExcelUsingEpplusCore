@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net452</TargetFramework>
 
-    <PackageId>ExcelWithEpplusCore</PackageId>
+    <PackageId>ExcelWithEpplusCore452</PackageId>
     <PackageVersion>1.1.7</PackageVersion>
     <Authors>Tilark_liu</Authors>
-    <Description>Read,Write Excel</Description>
+    <Description>Read,Write Excel,For Net452</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>Fix ReadFromExcel Bug</PackageReleaseNotes>
     <Copyright>Copyright 2017 (c) Contoso Corporation. All rights reserved.</Copyright>
